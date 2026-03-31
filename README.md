@@ -91,13 +91,13 @@ npm run dev
 DATABASE_URL=postgresql://user:password@localhost:5432/taxi_booking
 JWT_SECRET=your-super-secret-jwt-key-change-in-production
 JWT_REFRESH_SECRET=your-refresh-secret-key
-PORT=5000
+PORT=5001
 NODE_ENV=development
 ```
 
 #### Frontend (.env.local)
 ```
-NEXT_PUBLIC_API_URL=http://localhost:5000/api
+NEXT_PUBLIC_API_URL=http://localhost:5001/api
 ```
 
 ## Default Admin Credentials
