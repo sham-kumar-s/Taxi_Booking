@@ -15,6 +15,9 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Trust proxy for Render deployment (fixes rate limiter warning)
+app.set('trust proxy', 1);
+
 // Middleware
 app.use(helmet());
 app.use(
@@ -47,12 +50,9 @@ app.use("/api/admin", adminRoutes);
 // Error handling
 app.use(errorHandler);
 
-// Only start server if not in Vercel (Vercel handles this)
-if (process.env.NODE_ENV !== "production") {
-  app.listen(PORT, () => {
-    logger.info(`Server running on port ${PORT}`);
-    logger.info(`Environment: ${process.env.NODE_ENV}`);
-  });
-}
+app.listen(PORT, () => {
+  logger.info(`Server running on port ${PORT}`);
+  logger.info(`Environment: ${process.env.NODE_ENV}`);
+});
 
 export default app;
