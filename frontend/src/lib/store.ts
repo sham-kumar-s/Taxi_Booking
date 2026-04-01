@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 interface User {
   id: string;
@@ -15,31 +15,31 @@ interface AuthState {
   refreshToken: string | null;
   setAuth: (user: User, accessToken: string, refreshToken: string) => void;
   logout: () => void;
-  isAuthenticated: () => boolean;
-  isAdmin: () => boolean;
 }
 
 export const useAuthStore = create<AuthState>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       user: null,
       accessToken: null,
       refreshToken: null,
       setAuth: (user, accessToken, refreshToken) => {
-        localStorage.setItem('accessToken', accessToken);
-        localStorage.setItem('refreshToken', refreshToken);
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("refreshToken", refreshToken);
         set({ user, accessToken, refreshToken });
       },
       logout: () => {
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('refreshToken');
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
         set({ user: null, accessToken: null, refreshToken: null });
       },
-      isAuthenticated: () => !!get().user,
-      isAdmin: () => get().user?.role === 'ADMIN',
     }),
     {
-      name: 'auth-storage',
-    }
-  )
+      name: "auth-storage",
+    },
+  ),
 );
+
+// Helper functions outside the store (these work reliably)
+export const isAuthenticated = () => !!useAuthStore.getState().user;
+export const isAdmin = () => useAuthStore.getState().user?.role === "ADMIN";

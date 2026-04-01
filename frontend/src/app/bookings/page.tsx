@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { useAuthStore } from '@/lib/store'
+import { useAuthStore, isAuthenticated } from '@/lib/store'
 import api from '@/lib/api'
 import toast from 'react-hot-toast'
 
@@ -24,7 +24,7 @@ interface Booking {
 
 export default function BookingsPage() {
   const router = useRouter()
-  const { user, logout, isAuthenticated } = useAuthStore()
+  const { user, logout } = useAuthStore()
   const [bookings, setBookings] = useState<Booking[]>([])
   const [loading, setLoading] = useState(true)
 

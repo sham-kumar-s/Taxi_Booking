@@ -12,7 +12,11 @@
     "db:studio": "prisma studio",
     "test": "jest"
   },
-  "keywords": ["taxi", "booking", "pern"],
+  "keywords": [
+    "taxi",
+    "booking",
+    "pern"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
@@ -25,6 +29,7 @@
     "express-rate-limit": "^7.1.5",
     "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
+    "pg": "^8.20.0",
     "winston": "^3.11.0",
     "zod": "^3.22.4"
   },

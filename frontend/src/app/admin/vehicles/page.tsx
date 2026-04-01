@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { useAuthStore } from '@/lib/store'
+import { useAuthStore, isAuthenticated, isAdmin } from '@/lib/store'
 import api from '@/lib/api'
 import toast from 'react-hot-toast'
 
@@ -20,7 +20,7 @@ interface Vehicle {
 
 export default function VehiclesManagement() {
   const router = useRouter()
-  const { user, logout, isAuthenticated, isAdmin } = useAuthStore()
+  const { user, logout } = useAuthStore()
   const [vehicles, setVehicles] = useState<Vehicle[]>([])
   const [loading, setLoading] = useState(true)
   const [showModal, setShowModal] = useState(false)

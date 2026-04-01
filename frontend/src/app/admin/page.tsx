@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { useAuthStore } from '@/lib/store'
+import { useAuthStore, isAuthenticated, isAdmin } from '@/lib/store'
 import api from '@/lib/api'
 import toast from 'react-hot-toast'
 
@@ -17,7 +17,7 @@ interface Stats {
 
 export default function AdminDashboard() {
   const router = useRouter()
-  const { user, logout, isAuthenticated, isAdmin } = useAuthStore()
+  const { user, logout } = useAuthStore()
   const [stats, setStats] = useState<Stats | null>(null)
   const [loading, setLoading] = useState(true)
 

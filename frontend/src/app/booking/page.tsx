@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { useAuthStore } from '@/lib/store'
+import { useAuthStore, isAuthenticated } from '@/lib/store'
 import api from '@/lib/api'
 import toast from 'react-hot-toast'
 import Image from 'next/image'
@@ -19,7 +19,7 @@ interface Vehicle {
 
 export default function BookingPage() {
   const router = useRouter()
-  const { user, logout, isAuthenticated } = useAuthStore()
+  const { user, logout } = useAuthStore()
   const [step, setStep] = useState(1)
   const [loading, setLoading] = useState(false)
   const [estimates, setEstimates] = useState<Vehicle[]>([])

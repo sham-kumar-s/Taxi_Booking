@@ -2,12 +2,11 @@
 
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { useAuthStore } from '@/lib/store'
+import { useAuthStore, isAuthenticated, isAdmin } from '@/lib/store'
 import Link from 'next/link'
 
 export default function Home() {
   const router = useRouter()
-  const { isAuthenticated, isAdmin } = useAuthStore()
 
   useEffect(() => {
     if (isAuthenticated()) {

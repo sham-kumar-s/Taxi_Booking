@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { useAuthStore } from '@/lib/store'
+import { useAuthStore, isAuthenticated, isAdmin } from '@/lib/store'
 import api from '@/lib/api'
 import toast from 'react-hot-toast'
 
@@ -29,7 +29,7 @@ interface Booking {
 
 export default function BookingsManagement() {
   const router = useRouter()
-  const { logout, isAuthenticated, isAdmin } = useAuthStore()
+  const { logout } = useAuthStore()
   const [bookings, setBookings] = useState<Booking[]>([])
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState<string>('')
