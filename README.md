@@ -87,7 +87,7 @@ Fare = (Base Fare + Distance × Price Per KM) × Surge Multiplier
 
 ---
 
-### 3. Authentication Strategy
+### 3. Authentication Strategy 
 
 **Decision**: JWT (JSON Web Tokens) with Access + Refresh Token pattern
 
